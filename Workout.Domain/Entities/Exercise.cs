@@ -42,4 +42,6 @@ public class Exercise : BaseEntity
         if (!string.IsNullOrWhiteSpace(description))
             Description = description;
     }
+    
+    public void AddMedia(MediaItem mediaItem) => Media.Add(mediaItem);
 }
