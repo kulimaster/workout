@@ -1,3 +1,5 @@
+using Workout.Api.Filters;
+using Workout.Api.Middlewares;
 using Workout.Application;
 using Workout.Infrastructure;
 using Workout.Infrastructure.Configs;
@@ -12,7 +14,10 @@ builder.Configuration
 
 builder.Services.AddConfigSingleton<PostgresConfig>(builder.Configuration, "Postgres");
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.AddFilters();
+});
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -21,6 +26,7 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 app.MapControllers();
+app.UseMiddleware<ExceptionMiddleware>();
 
 
 app.Run();
