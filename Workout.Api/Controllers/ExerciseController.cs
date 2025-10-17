@@ -19,10 +19,6 @@ public class ExercisesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateExerciseRequest request)
     {
-        // ModelState zkontroluje atributy Required, MaxLength atd.
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
-
         var command = new CreateExerciseCommand(
             new CreateExerciseDto
             {

@@ -12,6 +12,7 @@
 - [ ] Generovani dle open api
 - [ ] StyleCop
 - [ ] tagy / descriptors
+- [ ] Transaction behavior with MediatR
 
 - [ ] JWT Authentication
 - [ ] HealthChecks
