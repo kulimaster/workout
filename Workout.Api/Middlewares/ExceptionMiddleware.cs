@@ -2,28 +2,33 @@ using System.Text.Json;
 
 namespace Workout.Api.Middlewares;
 
-internal sealed class ExceptionMiddleware : IMiddleware
+internal sealed class ExceptionMiddleware
 {
-    public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+    private readonly RequestDelegate _next;
+
+    public ExceptionMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
     {
         try
         {
-            await next(context);
-
+            await _next(context);
         }
         catch (Exception e)
         {
             context.Response.StatusCode = StatusCodes.Status500InternalServerError;
             context.Response.ContentType = "application/json";
 
-            var errorCode = "Gloval Error message";
             var json = JsonSerializer.Serialize(new
             {
                 error = e.Message,
-                code = errorCode
+                code = "Global Error message"
             });
-            await context.Response.WriteAsync(json);
 
+            await context.Response.WriteAsync(json);
         }
     }
 }
