@@ -14,6 +14,8 @@ builder.Configuration
 
 builder.Services.AddConfigSingleton<PostgresConfig>(builder.Configuration, "Postgres");
 
+builder.Services.AddOpenApi();
+
 builder.Services.AddControllers(options =>
 {
     options.AddFilters();
@@ -24,8 +26,20 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi(); 
+    app.UseReDoc(options =>
+    {
+        options.DocumentTitle = "Workout API Docs";
+        options.SpecUrl = "/openapi/v1.json";
+    });
+}
+
 app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionMiddleware>();
+
+
 
 app.MapControllers();
 

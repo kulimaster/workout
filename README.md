@@ -8,7 +8,7 @@
 - [x] Request Validation - filter / middleware
 - [ ] Serilog
 - [x] Decorated for logging with MediatR
-- [ ] Swagger
+- [x] open api documentation
 - [ ] Generovani dle open api
 - [ ] StyleCop
 - [ ] tagy / descriptors
