@@ -15,4 +15,4 @@
 - [ ] Transaction behavior with MediatR
 
 - [ ] JWT Authentication
-- [ ] HealthChecks
+- [ ] HealthChecks databaze apod - zeptat je openAI
