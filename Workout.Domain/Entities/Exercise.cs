@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Workout.Domain.Enums;
 using Workout.Domain.ValueObjects;
 using Workout.Shared.Domain;
@@ -11,6 +12,8 @@ public class Exercise : BaseEntity
     public Guid CreatedByUserId { get; private set; }
     public MuscleGroup PrimaryMuscleGroup { get; private set; }
     public List<EquipmentType> Equipment { get; private set; }
+    
+    [NotMapped]
     public List<MediaItem> Media { get; private set; }
 
     private Exercise() { } // EF Core

@@ -1,7 +1,7 @@
 ## TODO / Roadmap
 
 
-- [ ] Nastavit AppDbContext s EF Core
+- [x] Nastavit AppDbContext s EF Core
 - [ ] Exceptions
 - [ ] Api error Model response
 - [x] Global Error Handling - filter / middleware

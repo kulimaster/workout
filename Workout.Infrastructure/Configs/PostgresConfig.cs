@@ -6,10 +6,10 @@ public class PostgresConfig
     public int Port { get; set; }
     public string User { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
-    public string Schema { get; set; } = string.Empty;
+    public string Database { get; set; } = string.Empty;
     
     public string BuildConnectionString()
     {
-        return $"Host={Host};Port={Port};Database={Schema};Username={User};Password={Password}";
+        return $"Host={Host};Port={Port};Database={Database};Username={User};Password={Password}";
     }
 }

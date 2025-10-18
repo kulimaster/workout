@@ -12,16 +12,13 @@ public static class PersistenceDependencyInjection
 {
     public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddScoped<IExerciseRepository, ExerciseRepository>();
         services.AddDbContext<AppDbContext>((sp, options) =>
         {
             var pgConfig = sp.GetRequiredService<PostgresConfig>();
             options.UseNpgsql(pgConfig.BuildConnectionString());
         });
         
-        services.AddScoped<IExerciseRepository, ExerciseRepository>();
-        // services.AddScoped<IWorkoutRepository, WorkoutRepository>();
-
         return services;
     }
-    
 }

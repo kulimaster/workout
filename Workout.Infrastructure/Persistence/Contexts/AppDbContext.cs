@@ -7,7 +7,7 @@ public class AppDbContext : DbContext
 {
     public DbSet<Exercise> Exercises { get; set; }
     
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base()
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
         
     }
