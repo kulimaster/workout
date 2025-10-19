@@ -4,7 +4,7 @@ using Workout.Domain.Enums;
 
 namespace Workout.Api.Models;
 
-public class CreateExerciseRequest
+public class ExerciseModel
 {
     [JsonPropertyName("name")]
     [Required(ErrorMessage = "Name is required.")]

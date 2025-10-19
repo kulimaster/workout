@@ -3,7 +3,7 @@ using Workout.Api.Models;
 
 namespace Workout.Api.Shared;
 
-public class PaginationResponse<T> where T : IEnumerable<CreateExerciseRequest>
+public class PaginationResponse<T> where T : IEnumerable<ExerciseModel>
 {
     public T Data { get; set; } = default!;
     

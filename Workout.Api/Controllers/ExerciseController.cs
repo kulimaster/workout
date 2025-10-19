@@ -18,16 +18,16 @@ public class ExercisesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] CreateExerciseRequest request)
+    public async Task<IActionResult> Create([FromBody] ExerciseModel model)
     {
         var command = new CreateExerciseCommand(
             new CreateExerciseDto
             {
-                Name = request.Name,
-                Description = request.Description,
-                PrimaryMuscleGroup = request.PrimaryMuscleGroup,
-                Equipment = request.Equipment,
-                MediaUrls = request.MediaUrls
+                Name = model.Name,
+                Description = model.Description,
+                PrimaryMuscleGroup = model.PrimaryMuscleGroup,
+                Equipment = model.Equipment,
+                MediaUrls = model.MediaUrls
             });
 
         var exerciseId = await _mediator.Send(command);

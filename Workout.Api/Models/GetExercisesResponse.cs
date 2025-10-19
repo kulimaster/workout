@@ -3,11 +3,11 @@ using Workout.Domain.Entities;
 
 namespace Workout.Api.Models;
 
-public class GetExercisesResponse : PaginationResponse<List<CreateExerciseRequest>>
+public class GetExercisesResponse : PaginationResponse<List<ExerciseModel>>
 {
     public static GetExercisesResponse FromDomain(IEnumerable<Exercise> exercises)
     {
-        var exerciseList = exercises.Select(e => new CreateExerciseRequest
+        var exerciseList = exercises.Select(e => new ExerciseModel
         {
             Name = e.Name,
             Description = e.Description,
