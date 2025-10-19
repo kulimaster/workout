@@ -11,6 +11,5 @@ public sealed class CreateExerciseDto
 
     public EquipmentType Equipment { get; init; }
 
-    // Pro jednoduchost zatím budeme přidávat jen URL médií
     public List<string> MediaUrls { get; init; } = new();
 }

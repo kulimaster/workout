@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Workout.Api.Models;
 using Workout.Application.Exercises.Commands.CreateExercise;
+using Workout.Application.Exercises.Queries.GetExercises;
 
 namespace Workout.Api.Controllers;
 
@@ -32,6 +33,14 @@ public class ExercisesController : ControllerBase
         var exerciseId = await _mediator.Send(command);
 
         return CreatedAtAction(nameof(GetById), new { id = exerciseId }, null);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var query = new GetExercisesQuery();
+        var exercises = await _mediator.Send(query);
+        return Ok(GetExercisesResponse.FromDomain(exercises));
     }
 
     [HttpGet("{id:guid}")]
