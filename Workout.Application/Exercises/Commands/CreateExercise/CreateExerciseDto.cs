@@ -9,7 +9,7 @@ public sealed class CreateExerciseDto
 
     public MuscleGroup PrimaryMuscleGroup { get; init; }
 
-    public List<EquipmentType> Equipment { get; init; } = new();
+    public EquipmentType Equipment { get; init; }
 
     // Pro jednoduchost zatím budeme přidávat jen URL médií
     public List<string> MediaUrls { get; init; } = new();

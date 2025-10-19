@@ -1,3 +1,5 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Workout.Api.Filters;
 using Workout.Api.Middlewares;
 using Workout.Application;
@@ -17,9 +19,15 @@ builder.Services.AddConfigSingleton<PostgresConfig>(builder.Configuration, "Post
 builder.Services.AddOpenApi();
 
 builder.Services.AddControllers(options =>
-{
-    options.AddFilters();
-});
+    {
+        options.AddFilters();
+    })
+    .AddJsonOptions(jsonOptions =>
+    {
+        jsonOptions.JsonSerializerOptions.Converters.Add(
+            new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, allowIntegerValues: false)
+        );
+    });
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);

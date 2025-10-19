@@ -11,7 +11,7 @@ public class Exercise : BaseEntity
     public string Description { get; private set; }
     public Guid CreatedByUserId { get; private set; }
     public MuscleGroup PrimaryMuscleGroup { get; private set; }
-    public List<EquipmentType> Equipment { get; private set; }
+    public EquipmentType Equipment { get; private set; }
     
     [NotMapped]
     public List<MediaItem> Media { get; private set; }
@@ -23,7 +23,7 @@ public class Exercise : BaseEntity
         string description,
         Guid createdByUserId,
         MuscleGroup primaryMuscleGroup,
-        IEnumerable<EquipmentType>? equipment,
+        EquipmentType equipment,
         IEnumerable<MediaItem>? media)
     {
         if (string.IsNullOrWhiteSpace(name))
@@ -33,7 +33,7 @@ public class Exercise : BaseEntity
         Description = description;
         CreatedByUserId = createdByUserId;
         PrimaryMuscleGroup = primaryMuscleGroup;
-        Equipment = equipment?.ToList() ?? new List<EquipmentType>();
+        Equipment = equipment;
         Media = media?.ToList() ?? new List<MediaItem>();
     }
 

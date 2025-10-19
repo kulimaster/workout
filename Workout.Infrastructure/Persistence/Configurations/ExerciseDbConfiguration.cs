@@ -14,14 +14,16 @@ public class ExerciseDbConfiguration : IEntityTypeConfiguration<Exercise>
         builder.Property(e => e.Name).IsRequired().HasMaxLength(100);
         builder.Property(e => e.Description).IsRequired().HasMaxLength(500);
         builder.Property(e => e.PrimaryMuscleGroup).HasConversion<string>().HasMaxLength(50);
+        builder.Property(e => e.Equipment).HasConversion<string>().HasMaxLength(50);
         
         builder.Ignore(e => e.CreatedByUserId);
         
-        // JSON pro list enumů
-        builder.Property(e => e.Equipment)
-            .HasConversion(
-                v => JsonHelper.Serialize(v),
-                v => JsonHelper.Deserialize<List<EquipmentType>>(v) ?? new List<EquipmentType>());
+        
+        
+        
+        /*.HasConversion(
+            v => JsonHelper.Serialize(v),
+            v => JsonHelper.Deserialize<EquipmentType>(v) ?? new List<EquipmentType>());*/
 
         // Media jako samostatná tabulka
         /*builder.HasMany(e => e.Media)

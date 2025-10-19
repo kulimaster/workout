@@ -16,7 +16,7 @@ public sealed class CreateExerciseCommandValidator
         RuleFor(x => x.Exercise.PrimaryMuscleGroup)
             .IsInEnum();
 
-        RuleForEach(x => x.Exercise.Equipment)
+        RuleFor(x => x.Exercise.Equipment)
             .IsInEnum();
 
         RuleForEach(x => x.Exercise.MediaUrls)
