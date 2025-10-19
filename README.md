@@ -14,5 +14,7 @@
 - [ ] tagy / descriptors
 - [ ] Transaction behavior with MediatR
 
+- [ ] traceId
+- [ ] Paging
 - [ ] JWT Authentication
 - [ ] HealthChecks databaze apod - zeptat je openAI
