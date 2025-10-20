@@ -1,5 +1,6 @@
 using MediatR;
 using Workout.Application.Contracts.Persistence;
+using Workout.Shared.Exceptions;
 
 namespace Workout.Application.Exercises.Commands.UpdateExercise;
 
@@ -10,7 +11,7 @@ public class UpdateExerciseCommandHandler(IExerciseRepository repository) : IReq
         var exercise = repository.GetByIdAsync(input.Id).Result;
         if (exercise is null)
         {
-            //throw new BusinessErrorException("Exercise {id} not found", input.Id);
+            throw new BusinessErrorException($"Exercise {input.Id} not found");
         }
 
         exercise.Update(input.Exercise.Name, input.Exercise.Description, input.Exercise.PrimaryMuscleGroup,

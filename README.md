@@ -2,7 +2,7 @@
 
 
 - [x] Nastavit AppDbContext s EF Core
-- [ ] Exceptions
+- [x] Exceptions
 - [ ] Api error Model response
 - [x] Global Error Handling - filter / middleware
 - [x] Request Validation - filter / middleware
