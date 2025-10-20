@@ -37,13 +37,16 @@ public class Exercise : BaseEntity
         Media = media?.ToList() ?? new List<MediaItem>();
     }
 
-    public void Update(string? name, string? description)
+    public void Update(string? name, string? description, MuscleGroup? primaryMuscleGroup, EquipmentType? equipment)
     {
         if (!string.IsNullOrWhiteSpace(name))
             Name = name;
-
         if (!string.IsNullOrWhiteSpace(description))
             Description = description;
+        if (primaryMuscleGroup != null)
+            PrimaryMuscleGroup = primaryMuscleGroup.Value;
+        if (equipment != null)
+            Equipment = equipment.Value;
     }
     
     public void AddMedia(MediaItem mediaItem) => Media.Add(mediaItem);

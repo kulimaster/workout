@@ -2,6 +2,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Workout.Api.Models;
 using Workout.Application.Exercises.Commands.CreateExercise;
+using Workout.Application.Exercises.Commands.DeleteExercise;
+using Workout.Application.Exercises.Commands.UpdateExercise;
 using Workout.Application.Exercises.Queries.GetExercises;
 
 namespace Workout.Api.Controllers;
@@ -20,19 +22,19 @@ public class ExercisesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] ExerciseModel model)
     {
+        
         var command = new CreateExerciseCommand(
-            new CreateExerciseDto
-            {
-                Name = model.Name,
-                Description = model.Description,
-                PrimaryMuscleGroup = model.PrimaryMuscleGroup,
-                Equipment = model.Equipment,
-                MediaUrls = model.MediaUrls
-            });
+          new ExerciseDto( 
+                model.Name,
+                model.Description,
+                model.PrimaryMuscleGroup,
+                model.Equipment,
+                model.MediaUrls
+            )
+        );
 
         var exerciseId = await _mediator.Send(command);
-
-        return CreatedAtAction(nameof(GetById), new { id = exerciseId }, null);
+        return Ok(exerciseId);
     }
 
     [HttpGet]
@@ -43,10 +45,27 @@ public class ExercisesController : ControllerBase
         return Ok(GetExercisesResponse.FromDomain(exercises));
     }
 
-    [HttpGet("{id:guid}")]
-    public IActionResult GetById(Guid id)
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id)
     {
-        // jen placeholder
+        await _mediator.Send(new DeleteExerciseCommand(id));
+        return NoContent();
+    }
+    
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Update(Guid id, [FromBody] ExerciseModel model)
+    {
+        var command = new UpdateExerciseCommand(
+            id,
+            new ExerciseDto(
+                model.Name,
+                model.Description,
+                model.PrimaryMuscleGroup,
+                model.Equipment,
+                model.MediaUrls
+            )
+        );
+        await _mediator.Send(command);
         return Ok();
     }
 }

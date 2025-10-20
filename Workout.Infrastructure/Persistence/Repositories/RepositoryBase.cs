@@ -35,4 +35,16 @@ public abstract class RepositoryBase<T>(DbContext context) : IGenericRepository<
         await context.SaveChangesAsync();
         return entity;
     }
+
+    public async Task DeleteByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        var entityToDelete = await context.Set<T>()
+            .FirstOrDefaultAsync(q => q.Id == id, cancellationToken);
+
+        if (entityToDelete is not null)
+        {
+            context.Set<T>().Remove(entityToDelete);
+            await context.SaveChangesAsync(cancellationToken);
+        }
+    }
 }
