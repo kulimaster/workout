@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Serilog;
 using Workout.Shared.Exceptions;
 
 namespace Workout.Api.Filters;
@@ -8,6 +9,7 @@ internal sealed class GlobalExceptionFilter : IExceptionFilter
 {
     public void OnException(ExceptionContext context)
     {
+        Log.ForContext<GlobalExceptionFilter>().Error("Error {@Exception}",  context.Exception);
         var problemDetails = new ProblemDetails
         {
             Title = "An unexpected error occurred",

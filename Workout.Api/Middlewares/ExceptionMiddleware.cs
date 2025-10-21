@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Serilog;
 
 namespace Workout.Api.Middlewares;
 
@@ -19,6 +20,7 @@ internal sealed class ExceptionMiddleware
         }
         catch (Exception e)
         {
+            Log.ForContext<ExceptionMiddleware>().Error("Generic Error {@Exception}", e);
             context.Response.StatusCode = StatusCodes.Status500InternalServerError;
             context.Response.ContentType = "application/json";
 
