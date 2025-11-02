@@ -31,8 +31,11 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
         stopwatch.Stop();
 
         // Logování na konci
-        _logger.LogInformation("Handled {RequestName} in {ElapsedMilliseconds}ms - {@Response}",
-            requestName, stopwatch.ElapsedMilliseconds, response);
+        _logger.LogInformation(
+            "Handled {RequestName} in {ElapsedMilliseconds}ms - {@Response}",
+            requestName,
+            stopwatch.ElapsedMilliseconds,
+            response);
 
         return response;
     }

@@ -19,7 +19,7 @@ public class ExerciseModel
     public MuscleGroup PrimaryMuscleGroup { get; set; }
 
     [JsonPropertyName("equipment")]
-    public EquipmentType Equipment { get; set; } = new();
+    public EquipmentType Equipment { get; set; }
 
     [JsonPropertyName("mediaUrls")]
     public List<string> MediaUrls { get; set; } = new();

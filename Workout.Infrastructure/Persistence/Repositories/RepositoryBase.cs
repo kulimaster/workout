@@ -3,7 +3,8 @@ using Workout.Shared.Domain;
 
 namespace Workout.Infrastructure.Persistence.Repositories;
 
-public abstract class RepositoryBase<T>(DbContext context) : IGenericRepository<T> where T : BaseEntity
+public abstract class RepositoryBase<T>(DbContext context) : IGenericRepository<T>
+    where T : BaseEntity
 {
     public async Task<IEnumerable<T>> GetAllAsync()
     {

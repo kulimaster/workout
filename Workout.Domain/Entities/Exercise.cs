@@ -16,8 +16,6 @@ public class Exercise : BaseEntity
     [NotMapped]
     public List<MediaItem> Media { get; private set; }
 
-    private Exercise() { } // EF Core
-
     public Exercise(
         string name,
         string description,
@@ -27,7 +25,9 @@ public class Exercise : BaseEntity
         IEnumerable<MediaItem>? media)
     {
         if (string.IsNullOrWhiteSpace(name))
+        {
             throw new DomainException("Exercise name cannot be empty.");
+        }
 
         Name = name;
         Description = description;
@@ -37,16 +37,31 @@ public class Exercise : BaseEntity
         Media = media?.ToList() ?? new List<MediaItem>();
     }
 
+    private Exercise()
+    {
+    } // EF Core
+
     public void Update(string? name, string? description, MuscleGroup? primaryMuscleGroup, EquipmentType? equipment)
     {
         if (!string.IsNullOrWhiteSpace(name))
+        {
             Name = name;
+        }
+
         if (!string.IsNullOrWhiteSpace(description))
+        {
             Description = description;
+        }
+
         if (primaryMuscleGroup != null)
+        {
             PrimaryMuscleGroup = primaryMuscleGroup.Value;
+        }
+
         if (equipment != null)
+        {
             Equipment = equipment.Value;
+        }
     }
 
     public void AddMedia(MediaItem mediaItem) => Media.Add(mediaItem);

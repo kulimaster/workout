@@ -9,8 +9,15 @@ public class ExerciseSet
 
     public ExerciseSet(int repetitions, double weight)
     {
-        if (repetitions <= 0) throw new DomainException("Repetitions must be > 0.");
-        if (weight < 0) throw new DomainException("Weight cannot be negative.");
+        if (repetitions <= 0)
+        {
+            throw new DomainException("Repetitions must be > 0.");
+        }
+
+        if (weight < 0)
+        {
+            throw new DomainException("Weight cannot be negative.");
+        }
 
         Repetitions = repetitions;
         Weight = weight;

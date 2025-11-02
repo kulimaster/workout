@@ -3,7 +3,13 @@ root = true
 
 [*.cs]
 
+
+
+
 #### StyleCop rules alignment ####
+
+# Turn off xml comment analyzer
+dotnet_diagnostic.SA0001.severity = none
 
 # SA1200: Using directives must appear within a namespace declaration
 dotnet_diagnostic.SA1200.severity = none
@@ -16,3 +22,26 @@ dotnet_diagnostic.SA1633.severity = none
 
 # SA1101PrefixLocalCallsWithThis
 dotnet_diagnostic.SA1101.severity = none
+
+
+dotnet_diagnostic.SA1516.severity = none
+dotnet_diagnostic.SA1009.severity = none
+dotnet_diagnostic.SA1111.severity = none
+
+# SA1117: The parameters should all be placed on the same line or each parameter should be placed on its own line
+dotnet_diagnostic.SA1117.severity = none
+
+# It does make sense to have more classes in single file (ex. reponses)
+dotnet_diagnostic.SA1402.severity = none
+
+# Property can precede constructors
+dotnet_diagnostic.SA1201.severity = none
+
+# SA1309: Field names must not begin with an underscore (modern teams often use _field convention)
+dotnet_diagnostic.SA1309.severity = none
+
+# There is no neet to put comma after last argument
+dotnet_diagnostic.SA1413.severity = none
+
+# enum can be obvious, so it does not need another documentation
+dotnet_diagnostic.SA1602.severity = none

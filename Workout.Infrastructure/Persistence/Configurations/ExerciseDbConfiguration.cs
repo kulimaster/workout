@@ -18,9 +18,6 @@ public class ExerciseDbConfiguration : IEntityTypeConfiguration<Exercise>
 
         builder.Ignore(e => e.CreatedByUserId);
 
-
-
-
         /*.HasConversion(
             v => JsonHelper.Serialize(v),
             v => JsonHelper.Deserialize<EquipmentType>(v) ?? new List<EquipmentType>());*/

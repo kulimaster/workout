@@ -5,5 +5,4 @@ namespace Workout.Application.Contracts.Persistence;
 
 public interface IExerciseRepository : IGenericRepository<Exercise>
 {
-
 }

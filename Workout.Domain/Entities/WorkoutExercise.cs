@@ -12,14 +12,16 @@ public class WorkoutExercise : BaseEntity
     private readonly List<ExerciseSet> _sets = new();
     public IReadOnlyCollection<ExerciseSet> Sets => _sets.AsReadOnly();
 
-    private WorkoutExercise() { } // EF Core
-
     public WorkoutExercise(Guid workoutId, Exercise exercise)
     {
         WorkoutId = workoutId;
         ExerciseId = exercise.Id;
         Name = exercise.Name;
     }
+
+    private WorkoutExercise()
+    {
+    } // EF Core
 
     public void AddSet(ExerciseSet set)
     {

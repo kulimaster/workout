@@ -10,19 +10,11 @@ namespace Workout.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ExercisesController : ControllerBase
+public class ExerciseController(IMediator mediator) : ControllerBase
 {
-    private readonly IMediator _mediator;
-
-    public ExercisesController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] ExerciseModel model)
     {
-
         var command = new CreateExerciseCommand(
           new ExerciseDto(
                 model.Name,
@@ -33,7 +25,7 @@ public class ExercisesController : ControllerBase
             )
         );
 
-        var exerciseId = await _mediator.Send(command);
+        var exerciseId = await mediator.Send(command);
         return Ok(exerciseId);
     }
 
@@ -41,14 +33,14 @@ public class ExercisesController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         var query = new GetExercisesQuery();
-        var exercises = await _mediator.Send(query);
+        var exercises = await mediator.Send(query);
         return Ok(GetExercisesResponse.FromDomain(exercises));
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        await _mediator.Send(new DeleteExerciseCommand(id));
+        await mediator.Send(new DeleteExerciseCommand(id));
         return NoContent();
     }
 
@@ -65,7 +57,7 @@ public class ExercisesController : ControllerBase
                 model.MediaUrls
             )
         );
-        await _mediator.Send(command);
+        await mediator.Send(command);
         return Ok();
     }
 }

@@ -20,8 +20,9 @@ builder.Logging.ClearProviders();
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .WriteTo.Console(new LogJsonFormatter())
-    //.Enrich.FromLogContext()
-    //.Enrich.WithSpan()
+
+    // .Enrich.FromLogContext()
+    // .Enrich.WithSpan()
     .CreateLogger();
 builder.Host.UseSerilog();
 
@@ -64,4 +65,3 @@ app.UseMiddleware<QueryLoggingMiddleware>();
 app.MapControllers();
 
 app.Run();
-

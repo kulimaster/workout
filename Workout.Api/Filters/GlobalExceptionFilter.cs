@@ -13,7 +13,7 @@ internal sealed class GlobalExceptionFilter : IExceptionFilter
         var problemDetails = new ProblemDetails
         {
             Title = "An unexpected error occurred",
-            Detail = context.Exception.Message //todo v produkci obvykle nahradíš generickou hláškou
+            Detail = context.Exception.Message
         };
 
         context.Result = new ObjectResult(problemDetails)

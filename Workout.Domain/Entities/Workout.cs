@@ -10,12 +10,14 @@ public class Workout : BaseEntity
     private readonly List<WorkoutExercise> _exercises = new();
     public IReadOnlyCollection<WorkoutExercise> Exercises => _exercises.AsReadOnly();
 
-    private Workout() { } // EF Core
-
     public Workout(string? notes = null)
     {
         Notes = notes;
     }
+
+    private Workout()
+    {
+    } // EF Core
 
     public void AddExercise(WorkoutExercise exercise)
     {

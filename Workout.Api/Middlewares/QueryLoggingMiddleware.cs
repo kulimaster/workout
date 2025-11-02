@@ -23,8 +23,6 @@ public class QueryLoggingMiddleware(RequestDelegate next)
             .Information("Request started url: {RequestPath}", requestPath);
 
         await next(context);
-
-
         /*// Push do LogContext, aby se props objevily v logu
         using (LogContext.PushProperty("QueryParams", filteredQuery))
         {

@@ -5,16 +5,9 @@ using Workout.Domain.ValueObjects;
 
 namespace Workout.Application.Exercises.Commands.CreateExercise;
 
-internal sealed class CreateExerciseCommandHandler
+internal sealed class CreateExerciseCommandHandler(IExerciseRepository exerciseRepository)
     : IRequestHandler<CreateExerciseCommand, Guid>
 {
-    private readonly IExerciseRepository _exerciseRepository;
-
-    public CreateExerciseCommandHandler(IExerciseRepository exerciseRepository)
-    {
-        _exerciseRepository = exerciseRepository;
-    }
-
     public async Task<Guid> Handle(CreateExerciseCommand request, CancellationToken cancellationToken)
     {
         var dto = request.Exercise;
@@ -36,7 +29,7 @@ internal sealed class CreateExerciseCommandHandler
             media: mediaItems
         );
 
-        await _exerciseRepository.AddAsync(exercise);
+        await exerciseRepository.AddAsync(exercise);
 
         return exercise.Id;
     }

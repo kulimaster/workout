@@ -1,7 +1,7 @@
-using Serilog.Events;
-using Serilog.Formatting;
 using System.Text;
 using System.Text.Json;
+using Serilog.Events;
+using Serilog.Formatting;
 
 namespace Workout.Infrastructure.Logging
 {
@@ -15,8 +15,15 @@ namespace Workout.Infrastructure.Logging
 
         public void Format(LogEvent logEvent, TextWriter output)
         {
-            if (logEvent == null) throw new ArgumentNullException(nameof(logEvent));
-            if (output == null) throw new ArgumentNullException(nameof(output));
+            if (logEvent == null)
+            {
+                throw new ArgumentNullException(nameof(logEvent));
+            }
+
+            if (output == null)
+            {
+                throw new ArgumentNullException(nameof(output));
+            }
 
             // Vytvoříme dictionary s hlavními hodnotami
             var dict = new Dictionary<string, object>
@@ -38,14 +45,16 @@ namespace Workout.Infrastructure.Logging
             {
                 logEvent.Properties.TryGetValue(key, out var value);
                 if (value != null)
+                {
                     dict[key] = value.ToString().Trim('"');
+                }
             }
-
-
 
             // Přidáme exception, pokud existuje
             if (logEvent.Exception != null)
+            {
                 dict["Exception"] = logEvent.Exception.ToString();
+            }
 
             // Zapíšeme JSON do TextWriteru pomocí System.Text.Json
             using var stream = new MemoryStream();
@@ -56,10 +65,15 @@ namespace Workout.Infrastructure.Logging
                 {
                     writer.WritePropertyName(kv.Key);
                     if (kv.Value is string s)
+                    {
                         writer.WriteStringValue(s);
+                    }
                     else
+                    {
                         writer.WriteStringValue(kv.Value?.ToString() ?? string.Empty);
+                    }
                 }
+
                 writer.WriteEndObject();
                 writer.Flush();
             }
