@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Workout.Application.Common;
 
+#pragma warning disable CS8714
 public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
 {
     private readonly ILogger<LoggingBehavior<TRequest, TResponse>> _logger;

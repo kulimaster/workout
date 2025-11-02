@@ -37,6 +37,7 @@ public class Exercise : BaseEntity
         Media = media?.ToList() ?? new List<MediaItem>();
     }
 
+    #pragma warning disable CS8618
     private Exercise()
     {
     } // EF Core

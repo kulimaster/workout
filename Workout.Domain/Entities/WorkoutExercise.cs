@@ -19,6 +19,7 @@ public class WorkoutExercise : BaseEntity
         Name = exercise.Name;
     }
 
+    #pragma warning disable CS8618
     private WorkoutExercise()
     {
     } // EF Core

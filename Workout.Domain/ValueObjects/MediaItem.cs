@@ -18,6 +18,7 @@ public class MediaItem
         Type = type;
     }
 
+    #pragma warning disable CS8618
     private MediaItem()
     {
     } // EF Core
