@@ -1,5 +1,8 @@
 # top-most EditorConfig file
 root = true
+[**/Migrations/**]
+dotnet_analyzer_diagnostic.severity = none
+dotnet_diagnostic.CS8981.severity = none
 
 [*.cs]
 
