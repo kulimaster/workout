@@ -15,12 +15,12 @@ public class ExerciseDbConfiguration : IEntityTypeConfiguration<Exercise>
         builder.Property(e => e.Description).IsRequired().HasMaxLength(500);
         builder.Property(e => e.PrimaryMuscleGroup).HasConversion<string>().HasMaxLength(50);
         builder.Property(e => e.Equipment).HasConversion<string>().HasMaxLength(50);
-        
+
         builder.Ignore(e => e.CreatedByUserId);
-        
-        
-        
-        
+
+
+
+
         /*.HasConversion(
             v => JsonHelper.Serialize(v),
             v => JsonHelper.Deserialize<EquipmentType>(v) ?? new List<EquipmentType>());*/
@@ -31,7 +31,7 @@ public class ExerciseDbConfiguration : IEntityTypeConfiguration<Exercise>
             .HasForeignKey("ExerciseId")
             .OnDelete(DeleteBehavior.Cascade);*/
     }
-    
+
     public static class JsonHelper
     {
         public static string Serialize<T>(T value)

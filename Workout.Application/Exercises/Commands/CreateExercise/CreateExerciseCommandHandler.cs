@@ -5,7 +5,7 @@ using Workout.Domain.ValueObjects;
 
 namespace Workout.Application.Exercises.Commands.CreateExercise;
 
-internal sealed class CreateExerciseCommandHandler 
+internal sealed class CreateExerciseCommandHandler
     : IRequestHandler<CreateExerciseCommand, Guid>
 {
     private readonly IExerciseRepository _exerciseRepository;

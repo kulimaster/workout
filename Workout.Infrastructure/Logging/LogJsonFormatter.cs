@@ -40,8 +40,8 @@ namespace Workout.Infrastructure.Logging
                 if (value != null)
                     dict[key] = value.ToString().Trim('"');
             }
-            
-            
+
+
 
             // Přidáme exception, pokud existuje
             if (logEvent.Exception != null)

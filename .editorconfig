@@ -1,0 +1,18 @@
+# top-most EditorConfig file
+root = true
+
+[*.cs]
+
+#### StyleCop rules alignment ####
+
+# SA1200: Using directives must appear within a namespace declaration
+dotnet_diagnostic.SA1200.severity = none
+
+# Vypne vyžadování dokumentace pro všechny členy
+dotnet_diagnostic.SA1600.severity = none
+
+# SA1633: File must have header (disable if you don't use file headers)
+dotnet_diagnostic.SA1633.severity = none
+
+# SA1101PrefixLocalCallsWithThis
+dotnet_diagnostic.SA1101.severity = none

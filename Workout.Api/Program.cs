@@ -48,7 +48,7 @@ Log.ForContext<Program>().Information("Application started");
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi(); 
+    app.MapOpenApi();
     app.UseReDoc(options =>
     {
         options.DocumentTitle = "Workout API Docs";

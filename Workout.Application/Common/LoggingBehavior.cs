@@ -14,8 +14,8 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
     }
 
     public async Task<TResponse> Handle(
-        TRequest request, 
-        RequestHandlerDelegate<TResponse> next, 
+        TRequest request,
+        RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
         // Logování na začátku
@@ -31,7 +31,7 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
         stopwatch.Stop();
 
         // Logování na konci
-        _logger.LogInformation("Handled {RequestName} in {ElapsedMilliseconds}ms - {@Response}", 
+        _logger.LogInformation("Handled {RequestName} in {ElapsedMilliseconds}ms - {@Response}",
             requestName, stopwatch.ElapsedMilliseconds, response);
 
         return response;

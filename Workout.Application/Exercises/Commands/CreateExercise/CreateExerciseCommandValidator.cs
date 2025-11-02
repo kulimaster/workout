@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace Workout.Application.Exercises.Commands.CreateExercise;
 
-public sealed class CreateExerciseCommandValidator 
+public sealed class CreateExerciseCommandValidator
     : AbstractValidator<CreateExerciseCommand>
 {
     public CreateExerciseCommandValidator()

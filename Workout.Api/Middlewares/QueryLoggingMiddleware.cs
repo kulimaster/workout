@@ -15,7 +15,7 @@ public class QueryLoggingMiddleware(RequestDelegate next)
         var filteredQuery = queryParams
             .Where(kvp => kvp.Key.ToLower() != "password" && kvp.Key.ToLower() != "token")
             .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-        
+
         var requestPath = context.Request.Path.ToString();
 
         Log.ForContext("QueryParams", filteredQuery, destructureObjects: true)
@@ -23,8 +23,8 @@ public class QueryLoggingMiddleware(RequestDelegate next)
             .Information("Request started url: {RequestPath}", requestPath);
 
         await next(context);
-        
-        
+
+
         /*// Push do LogContext, aby se props objevily v logu
         using (LogContext.PushProperty("QueryParams", filteredQuery))
         {

@@ -18,7 +18,7 @@ public static class PersistenceDependencyInjection
             var pgConfig = sp.GetRequiredService<PostgresConfig>();
             options.UseNpgsql(pgConfig.BuildConnectionString());
         });
-        
+
         return services;
     }
 }

@@ -8,5 +8,5 @@ namespace Workout.Infrastructure.Persistence.Repositories;
 
 public class ExerciseRepository(AppDbContext context) : RepositoryBase<Exercise>(context), IExerciseRepository
 {
-    
+
 }

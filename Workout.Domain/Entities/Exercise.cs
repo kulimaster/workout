@@ -12,7 +12,7 @@ public class Exercise : BaseEntity
     public Guid CreatedByUserId { get; private set; }
     public MuscleGroup PrimaryMuscleGroup { get; private set; }
     public EquipmentType Equipment { get; private set; }
-    
+
     [NotMapped]
     public List<MediaItem> Media { get; private set; }
 
@@ -48,6 +48,6 @@ public class Exercise : BaseEntity
         if (equipment != null)
             Equipment = equipment.Value;
     }
-    
+
     public void AddMedia(MediaItem mediaItem) => Media.Add(mediaItem);
 }

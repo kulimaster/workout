@@ -22,9 +22,9 @@ public class ExercisesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] ExerciseModel model)
     {
-        
+
         var command = new CreateExerciseCommand(
-          new ExerciseDto( 
+          new ExerciseDto(
                 model.Name,
                 model.Description,
                 model.PrimaryMuscleGroup,
@@ -51,7 +51,7 @@ public class ExercisesController : ControllerBase
         await _mediator.Send(new DeleteExerciseCommand(id));
         return NoContent();
     }
-    
+
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] ExerciseModel model)
     {

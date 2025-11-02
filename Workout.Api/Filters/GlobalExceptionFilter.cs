@@ -9,7 +9,7 @@ internal sealed class GlobalExceptionFilter : IExceptionFilter
 {
     public void OnException(ExceptionContext context)
     {
-        Log.ForContext<GlobalExceptionFilter>().Error("Error {@Exception}",  context.Exception);
+        Log.ForContext<GlobalExceptionFilter>().Error("Error {@Exception}", context.Exception);
         var problemDetails = new ProblemDetails
         {
             Title = "An unexpected error occurred",
@@ -29,8 +29,8 @@ internal sealed class GlobalExceptionFilter : IExceptionFilter
         return context.Exception switch
         {
             ValidationErrorException => StatusCodes.Status400BadRequest,
-            BusinessErrorException   => StatusCodes.Status422UnprocessableEntity,
-            _                   => StatusCodes.Status500InternalServerError
+            BusinessErrorException => StatusCodes.Status422UnprocessableEntity,
+            _ => StatusCodes.Status500InternalServerError
         };
     }
 }

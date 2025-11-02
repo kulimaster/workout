@@ -16,7 +16,7 @@ public class UpdateExerciseCommandHandler(IExerciseRepository repository) : IReq
 
         exercise.Update(input.Exercise.Name, input.Exercise.Description, input.Exercise.PrimaryMuscleGroup,
             input.Exercise.Equipment);
-        
+
         await repository.UpdateAsync(exercise);
         return Unit.Value;
     }
