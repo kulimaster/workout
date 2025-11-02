@@ -3,9 +3,6 @@ root = true
 
 [*.cs]
 
-
-
-
 #### StyleCop rules alignment ####
 
 # Turn off xml comment analyzer
