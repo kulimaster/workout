@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using Workout.Api.Filters;
 using Workout.Api.Middlewares;
@@ -29,6 +30,13 @@ builder.Host.UseSerilog();
 builder.Services.AddConfigSingleton<PostgresConfig>(builder.Configuration, "Postgres");
 
 builder.Services.AddOpenApi();
+
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
+
 
 builder.Services.AddControllers(options =>
     {
