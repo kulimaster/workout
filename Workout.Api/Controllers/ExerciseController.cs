@@ -16,14 +16,14 @@ public class ExerciseController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> Create([FromBody] ExerciseModel model)
     {
         var command = new CreateExerciseCommand(
-          new ExerciseDto(
+            new ExerciseDto(
                 model.Name,
                 model.Description,
                 model.PrimaryMuscleGroup,
                 model.Equipment,
                 model.MediaUrls
             )
-        )
+        );
 
         var exerciseId = await mediator.Send(command);
         return Ok(exerciseId);
