@@ -10,12 +10,13 @@
 - [x] open api documentation
 - [x] StyleCop
 - [x] Api error Model response, zavest a logovat
+- [x] traceId
+
+## maybe later
 - [ ] Transaction behavior with MediatR
 - [ ] JWT Authentication
-
 - [ ] Generovani dle open api
 - [ ] tagy / descriptors
-- [x] traceId
 - [ ] Paging
 - [ ] HealthChecks databaze apod - zeptat je openAI
 
