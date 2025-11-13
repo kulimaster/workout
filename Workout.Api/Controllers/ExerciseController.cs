@@ -23,7 +23,7 @@ public class ExerciseController(IMediator mediator) : ControllerBase
                 model.Equipment,
                 model.MediaUrls
             )
-        );
+        )
 
         var exerciseId = await mediator.Send(command);
         return Ok(exerciseId);
