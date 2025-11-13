@@ -31,7 +31,6 @@ builder.Services.AddConfigSingleton<PostgresConfig>(builder.Configuration, "Post
 
 builder.Services.AddOpenApi();
 
-
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
