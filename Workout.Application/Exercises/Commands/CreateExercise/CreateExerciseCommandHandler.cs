@@ -29,8 +29,8 @@ internal sealed class CreateExerciseCommandHandler(IExerciseRepository exerciseR
             media: mediaItems
         );
 
-        await exerciseRepository.AddAsync(exercise);
+        var result = await exerciseRepository.AddAsync(exercise);
 
-        return exercise.Id;
+        return result.Id;
     }
 }

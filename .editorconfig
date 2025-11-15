@@ -17,6 +17,12 @@ dotnet_diagnostic.SA1200.severity = none
 # Vypne vyžadování dokumentace pro všechny členy
 dotnet_diagnostic.SA1600.severity = none
 
+# Vypne vyžadování dokumentace pro partial class
+dotnet_diagnostic.SA1601.severity = none
+
+# enum can be obvious, so it does not need another documentation
+dotnet_diagnostic.SA1602.severity = none
+
 # SA1633: File must have header (disable if you don't use file headers)
 dotnet_diagnostic.SA1633.severity = none
 
@@ -31,6 +37,9 @@ dotnet_diagnostic.SA1111.severity = none
 # SA1117: The parameters should all be placed on the same line or each parameter should be placed on its own line
 dotnet_diagnostic.SA1117.severity = none
 
+# A field within a C# class has an access modifier other than private. (base class can have protected fields)
+dotnet_diagnostic.SA1401.severity = none
+
 # It does make sense to have more classes in single file (ex. reponses)
 dotnet_diagnostic.SA1402.severity = none
 
@@ -43,5 +52,3 @@ dotnet_diagnostic.SA1309.severity = none
 # There is no neet to put comma after last argument
 dotnet_diagnostic.SA1413.severity = none
 
-# enum can be obvious, so it does not need another documentation
-dotnet_diagnostic.SA1602.severity = none

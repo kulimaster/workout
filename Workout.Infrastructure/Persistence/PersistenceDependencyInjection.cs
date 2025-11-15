@@ -13,11 +13,20 @@ public static class PersistenceDependencyInjection
     public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IExerciseRepository, ExerciseRepository>();
-        services.AddDbContext<AppDbContext>((sp, options) =>
+
+        if (configuration.GetValue<string>("ASPNETCORE_ENVIRONMENT") == "Test")
         {
-            var pgConfig = sp.GetRequiredService<PostgresConfig>();
-            options.UseNpgsql(pgConfig.BuildConnectionString());
-        });
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseInMemoryDatabase("TestDb"));
+        }
+        else
+        {
+            services.AddDbContext<AppDbContext>((sp, options) =>
+            {
+                var pgConfig = sp.GetRequiredService<PostgresConfig>();
+                options.UseNpgsql(pgConfig.BuildConnectionString());
+            });
+        }
 
         return services;
     }
